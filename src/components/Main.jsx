@@ -1,10 +1,11 @@
 import React from 'react'
-import { Navbar } from "./index"
+import { Navbar, Slider } from "./index"
 
 const Main = () => {
   return (
     <div>
       <Navbar />
+      <Slider />
     </div>
   )
 }
