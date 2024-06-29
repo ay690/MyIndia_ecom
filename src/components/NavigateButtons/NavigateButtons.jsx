@@ -2,22 +2,29 @@ import React from "react";
 import { Button } from "@material-tailwind/react";
 import clothes from "../../assets/images/clothes.jpg";
 import { buttons } from "../../helpers/buttons";
+import { filteredProducts } from "../../features/slices/productsSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const NavigateButtons = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex flex-wrap items-center justify-center py-8 gap-2">
         {buttons.map((button, idx) => {
           return (
             <div key={idx} className="mr-4">
-              <Button
-                color="gray"
-                ripple={true}
-                variant="outlined"
-                className="text-black hover:bg-gray-300 duration-300 ease-in"
-              >
-                {button}
-              </Button>
+              <Link to={"/filteredProducts/" + button}>
+                <Button
+                  color="gray"
+                  ripple={true}
+                  variant="outlined"
+                  className="text-black hover:bg-gray-300 duration-300 ease-in"
+                  onClick={() => dispatch(filteredProducts(button))}
+                >
+                  {button}
+                </Button>
+              </Link>
             </div>
           );
         })}

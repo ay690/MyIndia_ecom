@@ -2,7 +2,7 @@ export const buttons = [
   "Hoodies",
   "Dresses",
   "Suits",
-  "Shirts",
+  "T-Shirts",
   "Shoes",
   "Jeans",
   "Jackets",

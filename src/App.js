@@ -1,9 +1,17 @@
-import './App.css';
-import Main from './components/Main';
+import "./App.css";
+import { Main, FilteredProduct } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Main />
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/filteredProducts/:type" element={<FilteredProduct />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
