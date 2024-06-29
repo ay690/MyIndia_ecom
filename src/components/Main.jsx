@@ -1,11 +1,12 @@
 import React from 'react'
-import { Navbar, Slider } from "./index"
+import { Navbar, Slider, NavigateButtons } from "./index"
 
 const Main = () => {
   return (
     <div>
       <Navbar />
       <Slider />
+      <NavigateButtons />
     </div>
   )
 }
