@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   nextSlide,
   prevSlide,
@@ -10,6 +10,14 @@ import { sliderData } from "../../assets/data/dummyData";
 const Slider = () => {
   const slideIndex = useSelector((state) => state.slider.value);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(nextSlide(slideIndex + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [dispatch, slideIndex]);
 
   return (
     <div className="relative pb-4">
@@ -62,8 +70,7 @@ const Slider = () => {
         })}
       </div>
 
-
-     {/* ****** buttons next and prev ******  */}
+      {/* ****** buttons next and prev ******  */}
 
       <div>
         <button
