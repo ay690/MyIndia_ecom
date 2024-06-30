@@ -3,15 +3,20 @@ import logo from "../../assets/images/logo.png";
 import heart from "../../assets/images/heart.svg";
 import bag from "../../assets/images/bag.svg";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../features/slices/authSlice";
+import { Avatar, Tooltip } from "@material-tailwind/react";
 
 const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-
+  const user = useSelector((state) => state.auth?.user);
+  const { name, image } = user;
+  
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -22,13 +27,13 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-around">
         <div>
-          <img className="w-full h-28" src={logo} alt="store"></img>
+          <img className="w-full h-28" src={logo} alt="store" />
         </div>
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center">
           <div className="flex flex-row items-center cursor-pointer">
             <img src={heart} alt="heart" className="h-5" />
             <p className="mr-2 text-base font-medium leading-none tracking-normal text-center font-inter">
-              Whish List
+              Wish List
             </p>
           </div>
           <div
@@ -50,6 +55,23 @@ const Navbar = () => {
               {open && <Cart openModal={open} setOpen={setOpen}></Cart>}
             </div>
           </div>
+          {/* <div className="flex flex-row items-center pl-4 cursor-pointer">
+            {image && (
+              <Avatar
+                src={image}
+                alt="avatar"
+                size="sm"
+                className="mr-2"
+              />
+            )}
+            <div onClick={() => dispatch(logout())}>
+              <Tooltip content="Sign Out" placement="bottom">
+                <p className="text-sm font-medium leading-none tracking-normal font-inter">
+                  Hi {name.charAt("0").toUpperCase() + name.slice(1)}
+                </p>
+              </Tooltip>
+            </div>
+          </div> */}
         </div>
       </div>
     </>

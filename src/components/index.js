@@ -6,5 +6,16 @@ import FilteredProduct from "./FilteredProducts/FilteredProduct";
 import SingleProduct from "./FilteredProducts/SingleProduct";
 import ProductSection from "./ProductSection/ProductSection";
 import Footer from "./Footer/Footer";
+import Login from "./Login/Login";
 
-export { Main, Navbar, Slider, NavigateButtons, FilteredProduct, SingleProduct, ProductSection, Footer };
+export {
+  Main,
+  Navbar,
+  Slider,
+  NavigateButtons,
+  FilteredProduct,
+  SingleProduct,
+  ProductSection,
+  Footer,
+  Login,
+};
