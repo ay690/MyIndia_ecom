@@ -1,42 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
-import heart from "../../assets/images/heart.svg"
-import bag from "../../assets/images/bag.svg"
+import heart from "../../assets/images/heart.svg";
+import bag from "../../assets/images/bag.svg";
+import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <>
-      <div className="w-full bg-black p-2">
-        <h3 className="text-white font-inter text-2xl leading-none tracking-normal text-center">
-          Welcome All{" "}
-        </h3>
+      <div className="flex items-center justify-center w-full p-4 bg-black ">
+        <p className="text-2xl font-bold text-white font-inter ">
+          Redux Toolkit Time
+        </p>
       </div>
-      <div className="flex justify-around items-center">
+      <div className="flex items-center justify-around">
         <div>
-          <img src={logo} alt="Logo" className="h-20 w-full" />
-        </div>
-
-        <div className="flex flex-row justify-center">
-          <button className="font inter text-base font-bold tracking-normal leading-none text-center mr-4">
-            Logout
-          </button>
+          <img className="w-full h-28" src={logo} alt="store"></img>
         </div>
         <div className="flex flex-row items-center gap-2">
           <div className="flex flex-row items-center cursor-pointer">
-          <img src={heart} alt="heart" className="h-5"/>
-            <p className=" font-inter text-base font-medium tracking-normal leading-none text-center mr-2">
-              Wishlist
+            <img src={heart} alt="heart" className="h-5" />
+            <p className="mr-2 text-base font-medium leading-none tracking-normal text-center font-inter">
+              Whish List
             </p>
           </div>
-          <div className="flex flex-row items-center cursor-pointer">
-           <img src={bag} alt="cart" className="h-5" />
-            <p className=" font-inter text-base font-medium tracking-normal leading-none text-center mr-2">
+          <div
+            className="flex flex-row items-center cursor-pointer"
+            onClick={handleOpen}
+          >
+            {totalAmount > 0 ? (
+              <span className="px-2 mr-1 text-sm bg-gray-300 rounded-full font-inter">
+                {totalAmount}
+              </span>
+            ) : (
+              <img src={bag} alt="cart" className="h-5" />
+            )}
+
+            <p className="text-base font-medium leading-none tracking-normal text-center font-inter">
               Cart
             </p>
+            <div>
+              {open && <Cart openModal={open} setOpen={setOpen}></Cart>}
+            </div>
           </div>
         </div>
       </div>
-     
     </>
   );
 };
