@@ -23,7 +23,7 @@ const ProductSection = () => {
                 totalPrice={product.totalPrice}
                 color={product.color}
                 size={product.size}
-              ></ProductSectionItem>
+              />
             </div>
           );
         })}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Slider, NavigateButtons, ProductSection } from "./index";
+import { Navbar, Slider, NavigateButtons, ProductSection, Footer } from "./index";
 
 const Main = () => {
   return (
@@ -8,6 +8,7 @@ const Main = () => {
       <Slider />
       <NavigateButtons />
       <ProductSection />
+      <Footer />
     </div>
   );
 };
