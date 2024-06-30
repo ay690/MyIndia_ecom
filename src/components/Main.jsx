@@ -1,5 +1,5 @@
-import React from 'react'
-import { Navbar, Slider, NavigateButtons } from "./index"
+import React from "react";
+import { Navbar, Slider, NavigateButtons, ProductSection } from "./index";
 
 const Main = () => {
   return (
@@ -7,8 +7,9 @@ const Main = () => {
       <Navbar />
       <Slider />
       <NavigateButtons />
+      <ProductSection />
     </div>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

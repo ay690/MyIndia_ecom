@@ -4,5 +4,6 @@ import Main from "./Main";
 import NavigateButtons from "./NavigateButtons/NavigateButtons";
 import FilteredProduct from "./FilteredProducts/FilteredProduct";
 import SingleProduct from "./FilteredProducts/SingleProduct";
+import ProductSection from "./ProductSection/ProductSection";
 
-export { Main, Navbar, Slider, NavigateButtons, FilteredProduct, SingleProduct };
+export { Main, Navbar, Slider, NavigateButtons, FilteredProduct, SingleProduct, ProductSection };
