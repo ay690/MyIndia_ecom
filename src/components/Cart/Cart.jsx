@@ -42,7 +42,7 @@ const Cart = ({ openModal, setOpen }) => {
                           className="h-[125px] rounded-md"
                           src={item.img}
                           alt={item.name}
-                        ></img>
+                        />
                         <div className="flex flex-col items-start">
                           <h4 className="pt-2 text-base font-bold leading-none tracking-normal text-black font-inter">
                             {item.name}
