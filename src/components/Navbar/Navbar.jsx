@@ -3,18 +3,25 @@ import logo from "../../assets/images/logo.png";
 import heart from "../../assets/images/heart.svg";
 import bag from "../../assets/images/bag.svg";
 import Cart from "../Cart/Cart";
+import WishList from "../WishList/WishList";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/slices/authSlice";
 import { Avatar, Tooltip } from "@material-tailwind/react";
 
 const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const totalWishList = useSelector((state) => state.wish.totalAmount);
   const user = useSelector((state) => state.auth?.user);
   const { name, image } = user;
-  
+
   const [open, setOpen] = useState(false);
+  const [openWish, setOpenWish] = useState(false);
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const hanldeWishList = () => {
+    setOpenWish(true);
   };
   const dispatch = useDispatch();
 
@@ -30,12 +37,26 @@ const Navbar = () => {
           <img className="w-full h-28" src={logo} alt="store" />
         </div>
         <div className="flex flex-row items-center">
-          <div className="flex flex-row items-center cursor-pointer">
-            <img src={heart} alt="heart" className="h-5" />
+          <div
+            className="flex flex-row items-center cursor-pointer"
+            onClick={hanldeWishList}
+          >
+            {totalWishList > 0 ? (
+              <span className="px-2 mr-1 text-sm bg-gray-300 rounded-full font-inter">
+                {totalWishList}
+              </span>
+            ) : (
+              <img src={heart} alt="heart" className="h-5" />
+            )}
             <p className="mr-2 text-base font-medium leading-none tracking-normal text-center font-inter">
               Wish List
             </p>
           </div>
+          <div>
+              {openWish && (
+                <WishList openModal={openWish} setOpen={setOpenWish} />
+              )}
+            </div>
           <div
             className="flex flex-row items-center cursor-pointer"
             onClick={handleOpen}
@@ -52,7 +73,7 @@ const Navbar = () => {
               Cart
             </p>
             <div>
-              {open && <Cart openModal={open} setOpen={setOpen}></Cart>}
+              {open && <Cart openModal={open} setOpen={setOpen} />}
             </div>
           </div>
           {/* <div className="flex flex-row items-center pl-4 cursor-pointer">

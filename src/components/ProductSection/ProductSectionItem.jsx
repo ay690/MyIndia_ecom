@@ -10,6 +10,7 @@ import {
 import { Button } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/slices/cartSlice";
+import { addToWishlist } from "../../features/slices/wishListSlice";
 
 const ProductSectionItem = ({
   id,
@@ -84,6 +85,32 @@ const ProductSectionItem = ({
               ripple={true}
             >
               Add to Cart
+            </Button>
+          </Tooltip>
+
+          <Tooltip content="Add to WishList" placement="bottom">
+            <Button
+              onClick={() =>
+                dispatch(
+                  addToWishlist({
+                    id: id,
+                    img: img,
+                    text: text,
+                    amount: 1,
+                    price: price,
+                    totalPrice: totalPrice,
+                    name: name,
+                    size: defaultSize,
+                    color: defaultColor,
+                  })
+                )
+              }
+              size="lg"
+              color="blue"
+              variant="outlined"
+              ripple={true}
+            >
+              Add to Wishlist
             </Button>
           </Tooltip>
         </CardFooter>

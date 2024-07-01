@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Tooltip, Button } from "@material-tailwind/react";
 import { addToCart } from "../../features/slices/cartSlice";
+import { addToWishlist } from "../../features/slices/wishListSlice";
 
 const SingleProduct = () => {
   const product = useSelector((state) => state.products.singleProduct);
@@ -119,32 +120,59 @@ const SingleProduct = () => {
                       })}
                     </select>
                   </div>
+                  <div className="flex gap-2">
+                    <Tooltip content={"Add to Cart"} placeholder={"bottom"}>
+                      <Button
+                        color="gray"
+                        size="lg"
+                        variant="outlined"
+                        ripple={true}
+                        onClick={() =>
+                          dispatch(
+                            addToCart({
+                              id: item.id,
+                              name: item.name,
+                              img: item.img,
+                              text: item.text,
+                              size: size,
+                              color: color,
+                              price: item.price,
+                              amount: 1,
+                              totalPrice: item.price,
+                            })
+                          )
+                        }
+                      >
+                        Add To Cart
+                      </Button>
+                    </Tooltip>
 
-                  <Tooltip content={"Add to Cart"} placeholder={"bottom"}>
-                    <Button
-                      color="gray"
-                      size="lg"
-                      variant="outlined"
-                      ripple={true}
-                      onClick={() =>
-                        dispatch(
-                          addToCart({
-                            id: item.id,
-                            name: item.name,
-                            img: item.img,
-                            text: item.text,
-                            size: size,
-                            color: color,
-                            price: item.price,
-                            amount: 1,
-                            totalPrice: item.price,
-                          })
-                        )
-                      }
-                    >
-                      Add To Cart
-                    </Button>
-                  </Tooltip>
+                    <Tooltip content={"Add to Wishlist"} placeholder={"bottom"}>
+                      <Button
+                        color="blue"
+                        size="lg"
+                        variant="outlined"
+                        ripple={true}
+                        onClick={() =>
+                          dispatch(
+                            addToWishlist({
+                              id: item.id,
+                              name: item.name,
+                              img: item.img,
+                              text: item.text,
+                              size: size,
+                              color: color,
+                              price: item.price,
+                              amount: 1,
+                              totalPrice: item.price,
+                            })
+                          )
+                        }
+                      >
+                        Add To Wishlist
+                      </Button>
+                    </Tooltip>
+                  </div>
                 </div>
               </div>
             </div>
