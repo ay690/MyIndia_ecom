@@ -1,5 +1,10 @@
 # My Store
 
+# Demo Link
+
+https://store-ecommerce-react.netlify.app/
+
+
 # Description
 
 This dynamic, responsive e-commerce platform offers a seamless shopping experience with category-wise product filtering, allowing users to easily browse and navigate through different product categories. Each product is displayed in a stylish card format with essential details, and users can click for more information. The platform features a user-friendly shopping cart for viewing and managing items, as well as the ability to quickly add items to the cart from product listings or details pages. Additionally, users can save favorite products to a wishlist for future reference. Built with React.js and Tailwind CSS, the platform emphasizes high performance, maintainability, and a modern user interface, while Redux efficiently manages global and local states.
