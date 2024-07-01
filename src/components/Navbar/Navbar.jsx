@@ -18,26 +18,21 @@ const Navbar = () => {
     setOpen(true);
   };
 
-  const hanldeWishList = () => {
+  const handleWishList = () => {
     setOpenWish(true);
   };
   const dispatch = useDispatch();
 
   return (
     <>
-      <div className="flex items-center justify-center w-full p-4 bg-black ">
-        <p className="text-2xl font-bold text-white font-inter ">
-          Redux Toolkit Time
-        </p>
-      </div>
-      <div className="flex items-center justify-around">
-        <div>
-          <img className="w-full h-28" src={logo} alt="store" />
+      <div className="flex flex-col items-center justify-around p-4 shadow-lg bg-white-300 md:flex-row">
+        <div className="mb-4 md:mb-0">
+          <img className="w-24 h-24 md:w-28 md:h-28" src={logo} alt="store" />
         </div>
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center space-x-4 md:space-x-6">
           <div
             className="flex flex-row items-center cursor-pointer"
-            onClick={hanldeWishList}
+            onClick={handleWishList}
           >
             {totalWishList > 0 ? (
               <span className="px-2 mr-1 text-sm bg-gray-300 rounded-full font-inter">
@@ -51,10 +46,10 @@ const Navbar = () => {
             </p>
           </div>
           <div>
-              {openWish && (
-                <WishList openModal={openWish} setOpen={setOpenWish} />
-              )}
-            </div>
+            {openWish && (
+              <WishList openModal={openWish} setOpen={setOpenWish} />
+            )}
+          </div>
           <div
             className="flex flex-row items-center cursor-pointer"
             onClick={handleOpen}
@@ -66,15 +61,11 @@ const Navbar = () => {
             ) : (
               <img src={bag} alt="cart" className="h-5" />
             )}
-
             <p className="text-base font-medium leading-none tracking-normal text-center font-inter">
               Cart
             </p>
-            <div>
-              {open && <Cart openModal={open} setOpen={setOpen} />}
-            </div>
           </div>
-        
+          <div>{open && <Cart openModal={open} setOpen={setOpen} />}</div>
         </div>
       </div>
     </>

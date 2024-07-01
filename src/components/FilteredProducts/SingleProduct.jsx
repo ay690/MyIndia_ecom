@@ -16,21 +16,21 @@ const SingleProduct = () => {
   const { id } = useParams();
 
   return (
-    <div>
+    <div className="container px-4 mx-auto">
       {product
         .filter((product) => product.id === id)
         .map((item, idx) => {
           return (
-            <div key={idx} className="flex items-center justify-center py-10 ">
-              <div className="pl-44 grow-[2]">
+            <div key={idx} className="flex flex-col items-center justify-center gap-5 py-10 md:flex-row">
+              <div className="w-full md:pl-10 md:grow-2 md:w-auto">
                 <img
-                  className="h-[600px] rounded-lg"
+                  className="h-auto rounded-lg max-h-96"
                   src={item.img}
                   alt={item.name}
                 />
               </div>
-              <div className="grow-[3]">
-                <div className="max-w-lg">
+              <div className="w-full mt-10 md:grow-3 md:w-auto md:mt-0">
+                <div className="max-w-lg mx-auto">
                   <h5 className="pb-4 text-2xl font-bold leading-none tracking-normal font-inter">
                     {item.name}
                   </h5>
@@ -120,7 +120,7 @@ const SingleProduct = () => {
                       })}
                     </select>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2 md:flex-row">
                     <Tooltip content={"Add to Cart"} placeholder={"bottom"}>
                       <Button
                         color="gray"

@@ -10,16 +10,16 @@ const NavigateButtons = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center py-8 gap-2">
+      <div className="flex flex-wrap items-center justify-center gap-2 py-4 md:py-8 md:gap-4">
         {buttons.map((button, idx) => {
           return (
-            <div key={idx} className="mr-4">
+            <div key={idx} className="mr-2 md:mr-4">
               <Link to={"/filteredProducts/" + button}>
                 <Button
                   color="gray"
                   ripple={true}
                   variant="outlined"
-                  className="text-black hover:bg-gray-300 duration-300 ease-in"
+                  className="text-sm text-black duration-300 ease-in md:text-base lg:text-lg hover:bg-gray-300"
                   onClick={() => dispatch(filteredProducts(button))}
                 >
                   {button}
@@ -29,16 +29,16 @@ const NavigateButtons = () => {
           );
         })}
       </div>
-      <div className="bg-black p-2 w-[55%] mx-auto rounded-md">
-        <h3 className="text-red-600 text-center text-lg font-inter font-bold tracking-normal leading-none">
+      <div className="bg-black p-2 w-[80%] md:w-[60%] lg:w-[55%] mx-auto rounded-md">
+        <h3 className="text-base font-bold leading-none tracking-normal text-center text-red-600 md:text-lg lg:text-xl font-inter">
           SALES UP TO 50%
         </h3>
       </div>
-      <div className="flex justify-center items-center py-4">
+      <div className="flex items-center justify-center py-4">
         <img
           src={clothes}
           alt="Clothes"
-          className="h-[600px] w-[65%] rounded-md shadow-md shadow-gray-600"
+          className="h-[300px] md:h-[400px] lg:h-[600px] w-[90%] md:w-[75%] lg:w-[65%] rounded-md shadow-md shadow-gray-600 object-cover"
         />
       </div>
     </>

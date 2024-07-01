@@ -36,14 +36,14 @@ const Slider = () => {
               <div>
                 {parseInt(item.id) === slideIndex && (
                   <img
-                    className="h-[800px] w-full"
+                    className="h-[500px] md:h-[600px] lg:h-[800px] w-full object-cover"
                     src={item.img}
                     alt="shoes"
-                  ></img>
+                  />
                 )}
               </div>
-              <div className="absolute top-44 mx-auto inset-x-1/4">
-                <p className="text-white text-4xl font-inter font-bold tracking-normal leading-none">
+              <div className="absolute mx-auto text-center top-1/4 md:top-1/3 lg:top-1/2 inset-x-1/4">
+                <p className="text-xl font-bold leading-none tracking-normal text-white md:text-2xl lg:text-4xl font-inter">
                   {parseInt(item.id) === slideIndex && item.text}
                 </p>
               </div>
@@ -53,10 +53,11 @@ const Slider = () => {
       </div>
 
       {/* ********** for dots rendering******  */}
-      <div className="flex absolute bottom-12  left-[45%]">
+
+      <div className="absolute flex transform -translate-x-1/2 bottom-4 md:bottom-8 left-1/2">
         {sliderData?.map((dot, index) => {
           return (
-            <div className="mr-4" key={dot.id}>
+            <div className="mr-2 md:mr-4" key={dot.id}>
               <div
                 className={
                   index === slideIndex
@@ -71,10 +72,9 @@ const Slider = () => {
       </div>
 
       {/* ****** buttons next and prev ******  */}
-
       <div>
         <button
-          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute p-2 transform -translate-y-1/2 bg-white rounded-full top-1/2 right-4 hover:bg-green-300"
           onClick={() => dispatch(nextSlide(slideIndex + 1))}
         >
           <svg
@@ -93,7 +93,7 @@ const Slider = () => {
           </svg>
         </button>
         <button
-          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute p-2 transform -translate-y-1/2 bg-white rounded-full top-1/2 left-4 hover:bg-green-300"
           onClick={() => dispatch(prevSlide(slideIndex - 1))}
         >
           <svg

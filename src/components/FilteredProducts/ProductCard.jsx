@@ -16,14 +16,14 @@ const ProductCard = ({ id, name, text, img, price, colors }) => {
   return (
     <Link to={`/filteredProducts/${type}/` + id}>
       <Card
-        className="relative overflow-hidden w-96"
+        className="relative w-full mb-4 overflow-hidden md:w-72 lg:w-96"
         onClick={() => dispatch(singleProduct(id))}
       >
-        <CardHeader color="blue" className="h-96 w-full right-4 overflow-hidden ">
+        <CardHeader color="blue" className="w-full overflow-hidden h-72 lg:h-96">
           <img
             src={img}
             alt="img-blur-shadow"
-            className="absolute h-96 w-full object-cover"
+            className="object-cover w-full h-full"
           />
         </CardHeader>
         <CardBody className="text-center">
@@ -38,7 +38,7 @@ const ProductCard = ({ id, name, text, img, price, colors }) => {
             {colors?.map((color, index) => {
               return (
                 <i
-                  className="fas fa-map-marker-alt fa-sm mt-[3px] rounded-full p-2 mr-4 "
+                  className="fas fa-map-marker-alt fa-sm mt-[3px] rounded-full p-2 mr-4"
                   key={index}
                   style={{ backgroundColor: color }}
                 ></i>
