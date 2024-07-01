@@ -11,8 +11,6 @@ import { Avatar, Tooltip } from "@material-tailwind/react";
 const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const totalWishList = useSelector((state) => state.wish.totalAmount);
-  const user = useSelector((state) => state.auth?.user);
-  const { name, image } = user;
 
   const [open, setOpen] = useState(false);
   const [openWish, setOpenWish] = useState(false);
@@ -76,23 +74,7 @@ const Navbar = () => {
               {open && <Cart openModal={open} setOpen={setOpen} />}
             </div>
           </div>
-          {/* <div className="flex flex-row items-center pl-4 cursor-pointer">
-            {image && (
-              <Avatar
-                src={image}
-                alt="avatar"
-                size="sm"
-                className="mr-2"
-              />
-            )}
-            <div onClick={() => dispatch(logout())}>
-              <Tooltip content="Sign Out" placement="bottom">
-                <p className="text-sm font-medium leading-none tracking-normal font-inter">
-                  Hi {name.charAt("0").toUpperCase() + name.slice(1)}
-                </p>
-              </Tooltip>
-            </div>
-          </div> */}
+        
         </div>
       </div>
     </>

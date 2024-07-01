@@ -13,9 +13,7 @@ function App() {
   // console.log("totalAmount", totalAmount);
   // console.log("totalPrice", totalPrice);
 
-  const user = useSelector((state) => state.auth.user);
-  const { authUser } = user;
-
+  
   return (
     <div>
       <BrowserRouter>
