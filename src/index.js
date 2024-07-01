@@ -5,6 +5,7 @@ import App from "./App";
 import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,3 +15,5 @@ root.render(
     </ThemeProvider>
   </Provider>
 );
+
+serviceWorkerRegistration.register();
