@@ -9,21 +9,34 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { login } from "../../features/slices/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
-  const intitalState = {
+  const initialState = {
     name: "",
     password: "",
     image: "",
   };
-  const [values, setValues] = useState(intitalState);
+
+  const [values, setValues] = useState(initialState);
+  const [error, setError] = useState("");
+
+  const dispatch = useDispatch();
+  const { authUser, errorMessage } = useSelector((state) => state.auth.user);
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
-  const dispatch = useDispatch();
+  const handleSubmit = () => {
+    dispatch(login(values));
+    if (!authUser) {
+      setError(errorMessage);
+    } else {
+      setError("");
+    }
+  };
 
   return (
     <div className="grid items-center h-screen grid-cols-1 justify-items-center">
@@ -62,14 +75,14 @@ const Login = () => {
             value={values.image}
             onChange={onChange}
           />
-          <div className="-ml-2.5"></div>
+          {error && (
+            <Typography variant="small" color="red">
+              {error}
+            </Typography>
+          )}
         </CardBody>
         <CardFooter className="pt-0">
-          <Button
-            variant="gradient"
-            fullWidth
-            onClick={() => dispatch(login(values))}
-          >
+          <Button variant="gradient" fullWidth onClick={handleSubmit}>
             Sign In
           </Button>
           <Typography variant="small" className="flex justify-center mt-6">
